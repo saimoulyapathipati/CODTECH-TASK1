@@ -1,0 +1,72 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMQwVddZjrvhBZpIyQuC8cY",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/saimoulyapathipati/CODTECH-TASK1/blob/main/chandu\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "u3_JeRjYOLtS",
+        "outputId": "6df9cb50-3774-40cf-95c4-7e1bc115ab9e"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Drowsy']\n",
+            "0.875\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "/usr/local/lib/python3.10/dist-packages/sklearn/neighbors/_classification.py:238: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().\n",
+            "  return self._fit(X, y)\n",
+            "/usr/local/lib/python3.10/dist-packages/sklearn/base.py:493: UserWarning: X does not have valid feature names, but KNeighborsClassifier was fitted with feature names\n",
+            "  warnings.warn(\n"
+          ]
+        }
+      ],
+      "source": [
+        "import pandas as pd\n",
+        "from sklearn.neighbors import KNeighborsClassifier\n",
+        "sai=pd.read_csv('drowsy.csv')\n",
+        "feature=pd.read_csv('drowsy.csv',usecols=[0,1,2,3])\n",
+        "label=pd.read_csv('drowsy.csv',usecols=[4])\n",
+        "chandu=KNeighborsClassifier(n_neighbors=2)\n",
+        "chandu.fit(feature,label)\n",
+        "print(chandu.predict([[0.3,10,1,9]]))\n",
+        "print(chandu.score(feature,label))"
+      ]
+    }
+  ]
+}
